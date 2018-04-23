@@ -1,0 +1,33 @@
+h1 Listing leave_managements
+
+table
+  thead
+    tr
+      th Status
+      th Available leave
+      th Applied leaves
+      th From date
+      th To date
+      th User
+      th reason
+      th
+      th
+
+  tbody
+    - @leave_managements.each do |leave_management|
+      tr
+        td = leave_management.status
+        td = leave_management.available_leave
+        td = leave_management.applied_leaves
+        td = leave_management.from_date
+        td = leave_management.to_date
+        td = leave_management.reason
+        td = leave_management.user.name
+        -if current_user.present? && current_user.is_admin?
+          td = link_to 'Show', leave_management
+          td = link_to 'Edit', edit_leave_management_path(leave_management)
+          td = link_to 'Destroy', leave_management, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Leave management', new_leave_management_path

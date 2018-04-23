@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: 1
+  approved: false
+  rejected: false
+  available_leave: 1
+  applied_leaves: 1
+  from_date: 2018-04-19 17:20:56
+  to_date: 2018-04-19 17:20:56
+  user: one
+
+two:
+  status: 1
+  approved: false
+  rejected: false
+  available_leave: 1
+  applied_leaves: 1
+  from_date: 2018-04-19 17:20:56
+  to_date: 2018-04-19 17:20:56
+  user: two

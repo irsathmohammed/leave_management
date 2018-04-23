@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Status:
+  = @leave_management.status
+p
+  strong Available leave:
+  = @leave_management.available_leave
+p
+  strong Applied leaves:
+  = @leave_management.applied_leaves
+p
+  strong From date:
+  = @leave_management.from_date
+p
+  strong To date:
+  = @leave_management.to_date
+p
+  strong User:
+  = @leave_management.user.name
+
+=> link_to 'Edit', edit_leave_management_path(@leave_management)
+'|
+=< link_to 'Back', leave_managements_path
