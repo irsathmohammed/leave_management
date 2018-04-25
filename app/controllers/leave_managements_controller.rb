@@ -42,6 +42,14 @@ class LeaveManagementsController < ApplicationController
     end
   end
 
+  def applied_leave
+    to_date = params[:to_date].to_date
+    from_date = params[:from_date].to_date
+    @calculated = (to_date - from_date).to_i
+    render partial: 'leave_managements/applied_leave_partial'
+  end
+
+
   # PATCH/PUT /leave_managements/1
   # PATCH/PUT /leave_managements/1.json
   def update

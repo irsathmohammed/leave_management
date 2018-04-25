@@ -1,32 +1,8 @@
-h1 Editing leave_management
+h1 Editing leaves
 
-= simple_form_for(@leave_management) do |f|
-  - if @leave_management.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@leave_management.errors.count, "error")} prohibited this leave_management from being saved:"
-      ul
-        - @leave_management.errors.full_messages.each do |message|
-          li = message
+== render 'form'
 
-  .form-group
-    label status
-    = f.select :status, options_for_select([["Pending", "pending"], ["Approved", "approved"], ["Not Approved", "not_approved"]]), input_html: { class: "form-control" }
-  .form-group
-    = f.input :available_leave, input_html: { class: "form-control" }
-  .form-group
-    = f.input :applied_leaves, input_html: { class: "form-control" }
-  .form-group
-    = f.input :from_date, as: :string, input_html: { class: "form-control record-datepicker" }
-  .form-group
-    = f.input :to_date, as: :string, input_html: { class: "form-control record-datepicker" }
-  .form-group
-    = f.association :user, input_html: { class: "form-control" }
-
-  .actions
-    = f.button :submit, class: 'btn btn-primary alshop-info-btn'
-
-
-=> link_to 'Show', @leave_management
+=> link_to 'Show', admin_leave_management_path(@leave_management)
 '|
-=< link_to 'Back', leave_managements_path
+=< link_to 'Back', admin_leave_managements_path
 

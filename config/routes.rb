@@ -9,12 +9,16 @@ Rails.application.routes.draw do
 	    root 'devise/sessions#new', as: :unauthenticated_root
 	  end
 	end  
-  resources :leave_managements
+  resources :leave_managements do
+    collection do
+    	get :applied_leave
+    end
+  end
   resources :users
   namespace :admin do
 		get '/dashboard', to: 'admin#dashboard'
 		resources :users
-		resources :leave_managements
+		resources :leave_managements 
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

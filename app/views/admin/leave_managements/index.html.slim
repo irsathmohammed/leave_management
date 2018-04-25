@@ -1,6 +1,9 @@
-h1 Listing leave_managements
+.row
+  h1 Listing leaves
+  .btn.btn-info.new-button.pull-right
+    = link_to 'New Leave management', new_admin_leave_management_path
 
-table
+table.table
   thead
     tr
       th Status
@@ -23,10 +26,6 @@ table
         td = leave_management.to_date
         td = leave_management.reason
         td = leave_management.user.name
-        td = link_to 'Show', leave_management
-        td = link_to 'Edit', edit_leave_management_path(leave_management)
+        td = link_to 'Show', admin_leave_management_path(leave_management)
+        td = link_to 'Edit', edit_admin_leave_management_path(leave_management)
         td = link_to 'Destroy', leave_management, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Leave management', new_leave_management_path

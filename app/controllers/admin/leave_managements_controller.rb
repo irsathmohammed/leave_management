@@ -43,6 +43,9 @@ class Admin::LeaveManagementsController < ApplicationController
   def update
     respond_to do |format|
       if @leave_management.update(leave_management_params)
+        if @leave_management.status == 'approved'
+          @leave_management.user.update(number_of_leaves: @leave_management.user.number_of_leaves - @leave_management.applied_leaves)
+        end
         format.html { redirect_to @leave_management, notice: 'Leave management was successfully updated.' }
         format.json { render :show, status: :ok, location: @leave_management }
       else

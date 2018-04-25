@@ -7,48 +7,16 @@
           li = message
 
   .form-group
-    label status
-    -if current_user.present?
-      = f.select :status, options_for_select([["Pending", "pending"], ]), input_html: { class: "form-control", :disabled => true }
+    = f.input :from_date, as: :string, input_html: { class: "form-control record-datepicker", id: "from" }
   .form-group
-    = f.input :available_leave, input_html: { class: "form-control" }
+    = f.input :to_date, as: :string, input_html: { class: "form-control record-datepicker", id: "to"}
+  #leave_calculated
+    == render 'applied_leave_partial.html'
   .form-group
-    = f.input :applied_leaves, input_html: { class: "form-control" }
-  .form-group
-    = f.input :from_date, as: :string, input_html: { class: "form-control record-datepicker" }
-  .form-group
+    label Reason
     = f.text_area :reason, input_html: { class: "form-control" }
   .form-group
-    = f.input :to_date, as: :string, input_html: { class: "form-control record-datepicker" }
-  .form-group
-    = f.association :user, input_html: { class: "form-control" }
-
-
-    / input data-provide="datepicker" type="text"
-  /   = f.label :status
-  /   = f.number_field :status
-  / .field
-  /   = f.label :approved
-  /   = f.check_box :approved
-  / .field
-  /   = f.label :rejected
-  /   = f.check_box :rejected
-  / .field
-  /   = f.label :available_leave
-  /   = f.number_field :available_leave
-  / .field
-  /   = f.label :applied_leaves
-  /   = f.number_field :applied_leaves
-  / .field
-  /   = f.label :from_date
-  /   = f.datetime_select :from_date
-  / .field
-  /   = f.label :to_date
-  /   = f.datetime_select :to_date
-  / .field
-  /   = f.hidden_field :user,:value => current_user.id
-  / .actions = f.submit
-
+    = f.hidden_field :user_id,:value => current_user.id
 
   .actions
-    = f.button :submit, class: 'btn btn-primary alshop-info-btn'
+    = f.button :submit, class: 'btn btn-primary'

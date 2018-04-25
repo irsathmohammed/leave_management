@@ -1,0 +1,9 @@
+.form-group
+	label applied leave
+	-if @calculated.present?
+		input.form-control value="#{@calculated}" name="leave_management[applied_leaves]"
+	-elsif @leave_management.id.present?
+		input.form-control value="#{@leave_management.applied_leaves}" name="leave_management[applied_leaves]"
+	-else 
+		input.form-control name="leave_management[applied_leaves]" value=""
+

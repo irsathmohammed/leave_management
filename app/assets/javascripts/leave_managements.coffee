@@ -8,3 +8,18 @@ $(document).on 'turbolinks:load', ->
 	      autoclose: true
 	      todayHighlight: true
 	    return
+
+$(document).on 'change', '#to', ->
+	to_date = $(this).val()
+	from_date = $('#from').val()
+	$.ajax '/leave_managements/applied_leave',
+		type:'GET'
+		data:{
+			to_date: to_date,
+			from_date: from_date
+		}
+		success:(data) ->
+			$('#leave_calculated').html data
+
+
+	
